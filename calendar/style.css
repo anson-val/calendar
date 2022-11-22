@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    user-select: none; /* Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: linear-gradient(135deg, lightcoral, lightskyblue);
+}
+
+.wrapper{
+    background: rgba(255, 255, 255, 0.3);
+    width: 450px;
+    border-radius: 10px;
+    backdrop-filter: blur( 4px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+
+.wrapper header .current-date{
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+.wrapper header .icons span{
+    height: 40px;
+    width: 40px;
+    margin: 0 1px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.wrapper header .icons span:hover{
+    background: #f2f2f2;
+}
+
+.calendar{
+    padding: 20px;
+}
+
+.calendar ul{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.calendar ul li{
+    position: relative;
+    width: calc(100% / 7);
+}
+
+.calendar .week li{
+    font-weight: 500;
+}
+
+.calendar .days{
+    margin-bottom: 20px;
+}
+
+.calendar .days li{
+    z-index: 1;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.calendar .days li.inactive{
+    color: #aaa;
+}
+
+.calendar .days li::before{
+    position: absolute;
+    content: "";
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calendar .days li.active::before{
+    z-index: -1;
+    background: lavender;
+}
+
+.calendar .days li:hover::before{
+    z-index: -1;
+    background: #f2f2f2;
+}
+
+.event-previewer{
+    min-width: 100px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur( 7px );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: absolute;
+}
+
+.event-previewer header{
+    text-align: center;
+}
+
+.event-previewer header h1{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 5px 10px 0 5px;
+}
+
+.event-previewer header p{
+    margin: 0 10px 5px 5px;
+}
+
+.event-previewer p{
+    font-weight: 300;
+    margin: 10px;
+}
+
+.event-previewer .separator{
+    width: 5px;
+    height: 48px;
+    background: deepskyblue;
+}
