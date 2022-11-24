@@ -10,9 +10,9 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="calendar-container">
         <header>
-            <p class="current-date"></p>
+            <h1 class="current-date"></h1>
             <div class="icons">
                 <span id="today" class="material-symbols-rounded">today</span>
                 <span id="prev" class="material-symbols-rounded">chevron_left</span>
@@ -34,11 +34,14 @@
     </div>
     <div class="event-previewer">
         <header>
-            <h1></h1>
+            <h2></h2>
             <p></p>
         </header>
         <div class="separator"></div>
-        <p>No event today</p>
+        <div class="previewer-content">
+            <p>No event today</p>
+            <button class="btn-long">New</button>
+        </div>
     </div>
 </body>
 </html>

@@ -19,7 +19,64 @@ body{
     background-image: linear-gradient(135deg, lightcoral, lightskyblue);
 }
 
-.wrapper{
+p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+h2{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+h4{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.btn-long{
+    position: relative;
+    height: 25px;
+    min-width: 120px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    text-align: center;
+    background: #fff;
+}
+
+.btn-long:focus{
+    background: #eeeeee;
+}
+
+.btn-long::before{
+    position: absolute;
+    content: "";
+    left: 10px;
+    top: 7px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    border: 3px solid deepskyblue;
+}
+
+.btn-long:hover::before{
+    border-color: skyblue;
+}
+
+.separator{
+    width: 5px;
+    border-radius: 2px;
+    height: 48px;
+    background: deepskyblue;
+}
+
+.calendar-container{
     background: rgba(255, 255, 255, 0.3);
     width: 450px;
     border-radius: 10px;
@@ -28,19 +85,14 @@ body{
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-.wrapper header{
+.calendar-container header{
     display: flex;
     align-items: center;
     padding: 25px 30px 10px;
     justify-content: space-between;
 }
 
-.wrapper header .current-date{
-    font-size: 1.45rem;
-    font-weight: 600;
-}
-
-.wrapper header .icons span{
+.calendar-container header .icons span{
     height: 40px;
     width: 40px;
     margin: 0 1px;
@@ -51,7 +103,7 @@ body{
     font-size: 1.6rem;
 }
 
-.wrapper header .icons span:hover{
+.calendar-container header .icons span:hover{
     background: #f2f2f2;
 }
 
@@ -128,9 +180,7 @@ body{
     text-align: center;
 }
 
-.event-previewer header h1{
-    font-size: 25px;
-    font-weight: 500;
+.event-previewer header h2{
     margin: 5px 10px 0 5px;
 }
 
@@ -138,13 +188,11 @@ body{
     margin: 0 10px 5px 5px;
 }
 
-.event-previewer p{
-    font-weight: 300;
-    margin: 10px;
+.previewer-content{
+    margin: 5px 10px 0 10px;
 }
 
-.event-previewer .separator{
-    width: 5px;
-    height: 48px;
-    background: deepskyblue;
+.previewer-content .btn-long{
+    margin-top: 10px;
+    width: 100%
 }

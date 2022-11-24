@@ -1,6 +1,6 @@
 const currentDate = document.querySelector(".current-date"),
-    daysList = document.querySelector(".days"),
-    iconBar = document.querySelectorAll(".icons span"),
+    calDaysList = document.querySelector(".days"),
+    calIconBar = document.querySelectorAll(".icons span"),
     eventPreviewer = document.querySelector(".event-previewer"),
     eventPreviewerHeader = eventPreviewer.querySelector("header");
 
@@ -46,12 +46,12 @@ const renderCalendar = () => {
 
     // injects all the tags back to the HTML file.
     currentDate.innerText = `${months[currentMonth]} ${currentYear}`;
-    daysList.innerHTML = liTag;
+    calDaysList.innerHTML = liTag;
 }
 
 renderCalendar();
 
-iconBar.forEach(icon => {
+calIconBar.forEach(icon => {
     icon.addEventListener("click", () => {
 
         switch (icon.id) {
@@ -78,10 +78,10 @@ iconBar.forEach(icon => {
     });
 });
 
-daysList.addEventListener("click", (e) => {
+calDaysList.addEventListener("click", (e) => {
     if (e.target && e.target.matches("li")) {
         const offsetYAdjustment = 40;
-        eventPreviewerHeader.querySelector("h1").innerText = e.target.innerText;
+        eventPreviewerHeader.querySelector("h2").innerText = e.target.innerText;
         eventPreviewerHeader.querySelector("p").innerText = months[currentMonth].substring(0, 3);
         eventPreviewer.style.left = `${absPos(e.target).left}px`;
         eventPreviewer.style.top = `${absPos(e.target).top + offsetYAdjustment}px`;
@@ -93,7 +93,6 @@ daysList.addEventListener("click", (e) => {
 
 window.addEventListener("click", (e) => {
     if (!(e.target.matches("li") || e.target.matches("div.event-previewer")) && eventPreviewer.style.display === "flex"){
-        //console.log(e);
         eventPreviewer.style.display = "none";
     }
 })
