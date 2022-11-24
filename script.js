@@ -27,8 +27,9 @@ const renderCalendar = () => {
         lastDateofPrevMonth = new Date(currentYear, currentMonth, 0).getDate()    // returns the last day of currentMonth - 1 (previous month).
     let liTag = "";
 
+    // Add the dates of previous months to liTag
     for (let i = firstDayofMonth; i > 0; i--) {
-        liTag += `<li class="inactive">${lastDateofPrevMonth - i + 1}</li>`;
+        liTag += `<li class="inactive prev-date">${lastDateofPrevMonth - i + 1}</li>`;
     }
 
     // highlights the current day
@@ -40,8 +41,9 @@ const renderCalendar = () => {
         }
     }
 
+    // Add the dates of previous months to liTag
     for (let i = 1; i <= 6 - lastDayofMonth; i++) {
-        liTag += `<li class="inactive">${i}</li>`
+        liTag += `<li class="inactive next-date">${i}</li>`
     }
 
     // injects all the tags back to the HTML file.
@@ -81,8 +83,15 @@ calIconBar.forEach(icon => {
 calDaysList.addEventListener("click", (e) => {
     if (e.target && e.target.matches("li")) {
         const offsetYAdjustment = 40;
+        console.log(e);
         eventPreviewerHeader.querySelector("h2").innerText = e.target.innerText;
-        eventPreviewerHeader.querySelector("p").innerText = months[currentMonth].substring(0, 3);
+        if (e.target.className.includes("prev-date")){
+            eventPreviewerHeader.querySelector("p").innerText = months[currentMonth - 1].substring(0, 3);
+        } else if (e.target.className.includes("next-date")){
+            eventPreviewerHeader.querySelector("p").innerText = months[currentMonth + 1].substring(0, 3);
+        } else {
+            eventPreviewerHeader.querySelector("p").innerText = months[currentMonth].substring(0, 3);
+        }
         eventPreviewer.style.left = `${absPos(e.target).left}px`;
         eventPreviewer.style.top = `${absPos(e.target).top + offsetYAdjustment}px`;
         eventPreviewer.style.display = "flex";
@@ -92,7 +101,7 @@ calDaysList.addEventListener("click", (e) => {
 })
 
 window.addEventListener("click", (e) => {
-    if (!(e.target.matches("li") || e.target.matches("div.event-previewer")) && eventPreviewer.style.display === "flex"){
+    if (!(e.target.matches("li") || eventPreviewer.contains(e.target)) && eventPreviewer.style.display === "flex"){
         eventPreviewer.style.display = "none";
     }
 })
