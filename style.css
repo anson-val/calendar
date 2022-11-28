@@ -11,6 +11,10 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
+*:hover{
+    border: 1px solid blue;
+}
+
 .fw600{
     font-weight: 600;
 }
@@ -360,6 +364,20 @@ h4{
 
 .event-entry-container .input-area .datebox h3{
     margin:0 4px 0 4px;
+}
+
+.event-entry-container .event-actions{
+    position: absolute;
+    bottom: -12px;
+    display: flex;
+    margin-left: 25px;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-entry-container .event-actions .btn-long{
+    width: 45%;
 }
 
 .event-previewer{
