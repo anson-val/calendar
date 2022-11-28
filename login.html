@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Login</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js" defer></script>
+</head>
+<body>
+<section class="login-container">
+    <header>
+        <h1>Calendar.</h1>
+    </header>
+    <div class="login-input-area">
+        <div>
+            <div class="textbox">
+                <input class="f25 h50 fw600" type="text" id="username" required>
+                <label class="f25 fw600">Username</label>
+            </div>
+            <div class="textbox">
+                <input class="f25 h50 fw600" type="password" id="password" required>
+                <label class="f25 fw600">Password</label>
+            </div>
+            <div class="textbox" style="display:none" id="pwd-confirmation-row">
+                <input class="f25 h50 fw600" type="password" id="password-confirm" required>
+                <label class="f25 fw600">Verification</label>
+            </div>
+        </div>
+        <div class="bottom-input">
+            <div class="signin-toggle-row">
+                <p>Not a user yet? Sign up</p>
+                <div class="slider">
+                    <input type="checkbox" id="signin-toggle">
+                </div>
+            </div>
+            <button class="btn-long" id="credential-submit-btn"></button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

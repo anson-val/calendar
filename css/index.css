@@ -87,13 +87,13 @@
     border-radius: 10px 0 0 10px;
 }
 
-.event-entry-container .input-area{
+.event-entry-container .event-input-area{
     margin: 25px;
     position: relative;
     height: 90%;
 }
 
-.event-entry-container .input-area h2{
+.event-entry-container .event-input-area h2{
     color: #888888
 }
 
@@ -115,11 +115,11 @@
     align-items: center;
 }
 
-.event-entry-container .input-area .datebox{
+.event-entry-container .event-input-area .datebox{
     display: flex;
 }
 
-.event-entry-container .input-area .datebox h3{
+.event-entry-container .event-input-area .datebox h3{
     margin:0 4px 0 4px;
 }
 
