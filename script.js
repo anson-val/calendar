@@ -2,7 +2,10 @@ const currentDate = document.querySelector(".current-date"),
     calDaysList = document.querySelector(".days"),
     calIconBar = document.querySelectorAll(".icons span"),
     eventPreviewer = document.querySelector(".event-previewer"),
-    eventPreviewerHeader = eventPreviewer.querySelector("header");
+    eventPreviewerHeader = eventPreviewer.querySelector("header"),
+    eventEntryFoldToggles = document.querySelectorAll(".event-entry-container .event-toggle-row input"),
+    tagListNoti = document.querySelector("#tag-list-noti"),
+    tagListNotiItems = tagListNoti.querySelectorAll("li");
 
 let today = new Date(),    // returns the date of now (when the function is called).
     currentYear = today.getFullYear(),    // currentYear is the year that is being displayed.
@@ -55,7 +58,6 @@ renderCalendar();
 
 calIconBar.forEach(icon => {
     icon.addEventListener("click", () => {
-
         switch (icon.id) {
             case "prev":
                 currentMonth -= 1;
@@ -100,8 +102,31 @@ calDaysList.addEventListener("click", (e) => {
     }
 })
 
+eventEntryFoldToggles.forEach(toggle => {
+    toggle.addEventListener("change", (e) => {
+        if(e.target.checked) {
+            document.querySelector("#entry-area-" + e.target.id.substring(13)).style.display = "block";
+        } else {
+            document.querySelector("#entry-area-" + e.target.id.substring(13)).style.display = "none";
+        }
+    })
+})
+
 window.addEventListener("click", (e) => {
     if (!(e.target.matches("li") || eventPreviewer.contains(e.target)) && eventPreviewer.style.display === "flex"){
         eventPreviewer.style.display = "none";
+    }
+})
+
+tagListNoti.addEventListener("click", (e) => {
+    if (e.target.matches("li")) {
+        e.target.querySelector("input").checked = !e.target.querySelector("input").checked;
+        tagListNotiItems.forEach(item => {
+            if (item.querySelector("input").checked) {
+                item.style.backgroundColor = "cornflowerblue";
+            } else {
+                item.style.backgroundColor = "deepskyblue";
+            }
+        })
     }
 })
