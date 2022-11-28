@@ -34,9 +34,61 @@
     </section>
     <section class="event-entry-container">
         <div class="input-area">
-            <div class="textbox">
-                <input type="text" required>
-                <label>Title</label>
+            <div class="event-title-row">
+                <div class="textbox">
+                    <input class=" f25 h50 fw600" type="text" required>
+                    <label class="f25 fw600">Title</label>
+                </div>
+            </div>
+            <div class="event-input-row">
+                <h2>Date</h2>
+                <div class="datebox">
+                    <input type="date" id="entry-start-date">
+                    <h3>to</h3>
+                    <input type="date" id="entry-end-date">
+                </div>
+            </div>
+            <div class="event-toggle-row">
+                <h2>Include Time</h2>
+                <div class="slider">
+                    <input type="checkbox" id="entry-toggle-time">
+                </div>
+            </div>
+            <div class="event-input-row" style="display: none" id="entry-area-time">
+                <div class="datebox">
+                    <input type="time" id="entry-start-time">
+                    <h3>to</h3>
+                    <input type="time" id="entry-end-time">
+                </div>
+            </div>
+            <div class="event-toggle-row">
+                <h2>Include Location</h2>
+                <div class="slider">
+                    <input type="checkbox" id="entry-toggle-location">
+                </div>
+            </div>
+            <div class="event-input-row" style="display: none" id="entry-area-location">
+                <div class="textbox">
+                    <input class=" f25 h50 fw500" type="text" required>
+                    <label class="f25 fw500">Location</label>
+                </div>
+            </div>
+            <div class="event-toggle-row">
+                <h2>Notification</h2>
+                <div class="slider">
+                    <input type="checkbox" id="entry-toggle-reminder">
+                </div>
+            </div>
+            <div class="event-input-row" style="display: none" id="entry-area-reminder">
+                <ul class="tag-list" id="tag-list-noti">
+                    <li><input type="radio" name="noti-before">5 minutes before</li>
+                    <li><input type="radio" name="noti-before">10 minutes before</li>
+                    <li><input type="radio" name="noti-before">15 minutes before</li>
+                    <li><input type="radio" name="noti-before">30 minutes before</li>
+                    <li><input type="radio" name="noti-before">1 hour before</li>
+                    <li><input type="radio" name="noti-before">1 day before</li>
+                    <li><input type="radio" name="noti-before">1 week before</li>
+                </ul>
             </div>
         </div>
     </section>
