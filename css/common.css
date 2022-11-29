@@ -11,10 +11,6 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-*:hover{
-    border: 1px solid blue;
-}
-
 .fw600{
     font-weight: 600;
 }
@@ -162,7 +158,7 @@ h4{
     background: rgba(255, 255, 255, 0.3);
 }
 
-.textbox label{
+.textbox .placeholder{
     pointer-events: none;
     color: #888;
     position: absolute;
@@ -171,7 +167,7 @@ h4{
     transition: 0.2s;
 }
 
-.textbox input:focus ~ label{
+.textbox input:focus ~ .placeholder{
     opacity: 1;
     padding: 0 4px 0 4px;
     border-radius: 30px;
@@ -181,8 +177,21 @@ h4{
     color: #ffffff;
 }
 
-.textbox input:valid:not(:focus) ~ label{
+.textbox input:valid:not(:focus) ~ .placeholder{
     opacity: 0;
+}
+
+.textbox .invalid-alert{
+    display: none;
+    position: absolute;
+    pointer-events: none;
+    top: -7px;
+    right: 0;
+    background: #ff4e8e;
+    color: #ffffff;
+    border-radius: 30px;
+    padding: 0 4px 0 4px;
+    font-size: 12px;
 }
 
 .datebox input{
