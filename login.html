@@ -18,13 +18,31 @@
     <form class="login-input-area" method="POST">
         <div>
             <div class="textbox">
-                <input class="f25 h50 fw600" type="text" id="login-email" required>
+                <input class="f25 h50 fw600" type="text" id="login-email-box" autofocus required>
                 <label class="placeholder f25 fw600">Email</label>
                 <label class="invalid-alert fw600" id="invalid-email-label">Invalid Email address.</label>
             </div>
             <div class="textbox">
-                <input class="f25 h50 fw600" type="password" id="login-password" required>
+                <input class="f25 h50 fw600" type="password" id="login-password-box" required>
                 <label class="placeholder f25 fw600">Password</label>
+            </div>
+            <div class="password-requirement-container">
+                <div class="indicator-item">
+                    <span id="length-indicator"></span>
+                    <p><strong>8-32</strong> characters long</p>
+                </div>
+                <div class="indicator-item">
+                    <span id="character-indicator"></span>
+                    <p><strong>Uppercase and lowercase</strong> letters</p>
+                </div>
+                <div class="indicator-item">
+                    <span id="number-indicator"></span>
+                    <p><strong>1 or more</strong> numbers</p>
+                </div>
+                <div class="indicator-item">
+                    <span id="symbol-indicator"></span>
+                    <p><strong>1 or more</strong> special characters</p>
+                </div>
             </div>
         </div>
         <div class="bottom-input">
