@@ -85,38 +85,34 @@ function invalidPasswordAlert() {
     }
 }
 
+function checkEmailFull() {
+    invalidEmailAlert();
+    credentialSubmitButton.disabled = !(validateEmail(emailTextbox.value) && validatePassword(passwordTextbox.value));
+}
+
+function checkPasswordFull() {
+    invalidPasswordAlert();
+    checkLength(passwordTextbox.value);
+    checkCharacter(passwordTextbox.value);
+    checkNumber(passwordTextbox.value);
+    checkSymbol(passwordTextbox.value);
+    credentialSubmitButton.disabled = !(validateEmail(emailTextbox.value) && validatePassword(passwordTextbox.value));
+}
+
 signInToggle.addEventListener("change", () => {
     if (signInToggle.checked){
-
         passwordRequirementContainer.style.display = "block";
-
-        invalidEmailAlert();
-        invalidPasswordAlert();
-        checkLength(passwordTextbox.value);
-        checkCharacter(passwordTextbox.value);
-        checkNumber(passwordTextbox.value);
-        checkSymbol(passwordTextbox.value);
-        credentialSubmitButton.disabled = !(validateEmail(emailTextbox.value) && validatePassword(passwordTextbox.value));
-
-        emailTextbox.addEventListener("input", () => {
-            invalidEmailAlert();
-            credentialSubmitButton.disabled = !(validateEmail(emailTextbox.value) && validatePassword(passwordTextbox.value));
-        })
-
-        passwordTextbox.addEventListener("input", () => {
-            invalidPasswordAlert();
-            checkLength(passwordTextbox.value);
-            checkCharacter(passwordTextbox.value);
-            checkNumber(passwordTextbox.value);
-            checkSymbol(passwordTextbox.value);
-            credentialSubmitButton.disabled = !(validateEmail(emailTextbox.value) && validatePassword(passwordTextbox.value));
-        })
-
+        checkEmailFull();
+        checkPasswordFull();
+        emailTextbox.addEventListener("input", checkEmailFull, true)
+        passwordTextbox.addEventListener("input", checkPasswordFull, true)
     } else {
         passwordRequirementContainer.style.display = "none";
         invalidEmailLabel.style.display = "none";
         emailTextbox.style.color = "black";
         passwordTextbox.style.color = "black";
         credentialSubmitButton.disabled = false;
+        emailTextbox.removeEventListener("input", checkEmailFull, true)
+        passwordTextbox.removeEventListener("input", checkPasswordFull, true)
     }
 })
