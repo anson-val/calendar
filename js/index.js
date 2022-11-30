@@ -1,11 +1,43 @@
+// Functions
+function absPos(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+        left: rect.left + window.scrollX,
+        top: rect.top + window.scrollY
+    };
+}
+
+function insertZero(quantity) {
+    if (quantity < 10) {
+        quantity = "0" + quantity;
+    }
+    return quantity;
+}
+
+
+// Nav-bar
+const navClock = document.querySelector(".nav-clock");
+
+function renderTime() {
+    const currentTime = new Date();
+    let hours = currentTime.getHours(),
+        minutes = currentTime.getMinutes(),
+        seconds = currentTime.getSeconds();
+
+    insertZero(hours);
+    insertZero(minutes);
+    insertZero(seconds);
+
+    navClock.innerHTML = insertZero(hours) + ":" + insertZero(minutes) + ":" + insertZero(seconds);
+    setTimeout(function(){renderTime()}, 1000);
+}
+
+renderTime();
+
+// Calendar
 const currentDate = document.querySelector(".current-date"),
     calDaysList = document.querySelector(".days"),
-    calIconBar = document.querySelectorAll(".icons span"),
-    eventPreviewer = document.querySelector(".event-previewer"),
-    eventPreviewerHeader = eventPreviewer.querySelector("header"),
-    eventEntryFoldToggles = document.querySelectorAll(".event-entry-container .event-toggle-row input"),
-    tagListNoti = document.querySelector("#tag-list-noti"),
-    tagListNotiItems = tagListNoti.querySelectorAll("li");
+    calIconBar = document.querySelectorAll(".icons span");
 
 let today = new Date(),    // returns the date of now (when the function is called).
     currentYear = today.getFullYear(),    // currentYear is the year that is being displayed.
@@ -14,14 +46,6 @@ let today = new Date(),    // returns the date of now (when the function is call
 // .getMonth() returns integer 0-11, so we need an array to convert 0-11 to English.
 const months = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"];
-
-function absPos(el) {
-    const rect = el.getBoundingClientRect();
-    return {
-        left: rect.left + window.scrollX,
-        top: rect.top + window.scrollY
-    };
-}
 
 const renderCalendar = () => {
     let firstDayofMonth = new Date(currentYear, currentMonth, 1).getDay(),    // returns the corresponding weekday of the first day of currentMonth.
@@ -82,6 +106,10 @@ calIconBar.forEach(icon => {
     });
 });
 
+// Event Previewer
+const eventPreviewer = document.querySelector(".event-previewer"),
+    eventPreviewerHeader = eventPreviewer.querySelector("header");
+
 calDaysList.addEventListener("click", (e) => {
     if (e.target && e.target.matches("li")) {
         const offsetYAdjustment = 40;
@@ -101,6 +129,11 @@ calDaysList.addEventListener("click", (e) => {
         eventPreviewer.style.animationDuration = "0.3s";
     }
 })
+
+// Event Entry Area
+const     eventEntryFoldToggles = document.querySelectorAll(".event-entry-container .event-toggle-row input"),
+    tagListNoti = document.querySelector("#tag-list-noti"),
+    tagListNotiItems = tagListNoti.querySelectorAll("li");
 
 eventEntryFoldToggles.forEach(toggle => {
     toggle.addEventListener("change", (e) => {
