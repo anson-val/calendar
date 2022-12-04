@@ -1,6 +1,9 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express'),
+    dotenv = require('dotenv'),
+    app = express(),
+    port = 3000;
+
+dotenv.config({path: __dirname + '/.env' });
 
 app.set("view engine", "ejs");
 

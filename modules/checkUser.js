@@ -1,10 +1,10 @@
 const argon2 = require('argon2')
 const mariadb = require('mariadb')
 const pool = mariadb.createPool({
-    host: 'XXX',
-    port: 'XXX',
-    user: 'XXX',
-    password:'XXX',
+    host: process.env.MARIADB_HOST,
+    port: process.env.MARIADB_PORT,
+    user: process.env.MARIADB_USERNAME,
+    password:process.env.MARIADB_PWD,
     database: 'calendar',
     connectionLimit: 5
 })
