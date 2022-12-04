@@ -4,3 +4,6 @@
 
 # ignore node/grunt dependency directories
 node_modules/
+
+## ignore package-lock.json
+package-lock.json
