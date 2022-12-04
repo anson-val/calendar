@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar Login</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/login.css">
-    <script src="js/login.js" defer></script>
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/login.css">
+    <script src="/public/js/login.js" defer></script>
 </head>
 <body>
 <section class="login-container">
@@ -18,12 +18,12 @@
     <form class="login-input-area" method="POST">
         <div>
             <div class="textbox">
-                <input class="f25 h50 fw600" type="text" id="login-email-box" autofocus required>
+                <input class="f25 h50 fw600" type="text" id="login-email-box" name="email" autofocus required>
                 <label class="placeholder f25 fw600">Email</label>
                 <label class="invalid-alert fw600" id="invalid-email-label">Invalid Email address.</label>
             </div>
             <div class="textbox">
-                <input class="f25 h50 fw600" type="password" id="login-password-box" required>
+                <input class="f25 h50 fw600" type="password" id="login-password-box" name="password" required>
                 <label class="placeholder f25 fw600">Password</label>
             </div>
             <div class="password-requirement-container">
@@ -49,7 +49,7 @@
             <div class="signin-toggle-row">
                 <p>Not a user yet? Sign up</p>
                 <div class="slider">
-                    <input type="checkbox" id="signin-toggle">
+                    <input type="checkbox" id="signin-toggle" name="signInMode">
                 </div>
             </div>
             <button class="btn-long" id="credential-submit-btn" type="submit"></button>

@@ -12,7 +12,7 @@ signInToggle.addEventListener("change", () => {
     }
 })
 
-// Input Validation
+// Client-side Input Validation
 const emailTextbox=document.querySelector("#login-email-box"),
     passwordTextbox=document.querySelector("#login-password-box"),
     invalidEmailLabel = document.querySelector("#invalid-email-label"),
