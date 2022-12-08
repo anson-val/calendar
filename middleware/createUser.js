@@ -1,6 +1,6 @@
-const argon2 = require('argon2')
-const mariadb = require('mariadb')
-const pool = mariadb.createPool({
+const argon2 = require('argon2'),
+    mariadb = require('mariadb'),
+    pool = mariadb.createPool({
     host: process.env.MARIADB_HOST,
     port: process.env.MARIADB_PORT,
     user: process.env.MARIADB_USERNAME,
@@ -19,18 +19,25 @@ function validatePassword(password){
     return re.test(password);
 }
 
-module.exports = async function (email, password) {
+module.exports = async function createUser (req, res, next) {
+    if (req.body.signInMode !== "on") {
+        return next()
+    }
+
     let conn;
-    const hash = await argon2.hash(password);
+    const hash = await argon2.hash(req.body.password);
 
     try {
         conn = await pool.getConnection()
-        const res = await conn.query("INSERT INTO credential (email_address, hash) VALUE (?,?)", [email, hash])
+        const createRecord = await conn.query("INSERT INTO credential (email_address, hash) VALUE (?,?)", [req.body.email, hash])
 
-        if (validateEmail(email) && validatePassword(password)) {
-            console.log(res);
-            return 0
-        } else return 1
+        if (!validateEmail(req.body.email) || !validatePassword(req.body.password)) {
+            res.redirect("/")
+            return next()
+        }
+
+        console.log(createRecord);
+        res.send("OK")
     } catch (err) {
         throw err;
     } finally {
@@ -38,4 +45,5 @@ module.exports = async function (email, password) {
             await conn.end()
         }
     }
+    next()
 }
