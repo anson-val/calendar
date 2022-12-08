@@ -14,7 +14,7 @@ const loginRouter = require("./routes/login.js")
 app.use("/login", loginRouter)
 
 app.get("/", (req, res) => {
-    res.redirect("login");
+    res.render("index")
 })
 
 app.listen(port);
