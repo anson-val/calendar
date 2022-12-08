@@ -32,12 +32,13 @@ module.exports = async function createUser (req, res, next) {
         const createRecord = await conn.query("INSERT INTO credential (email_address, hash) VALUE (?,?)", [req.body.email, hash])
 
         if (!validateEmail(req.body.email) || !validatePassword(req.body.password)) {
-            res.redirect("/")
-            return next()
+            req.isLoggedIn = false ;
+            res.redirect("/");
+            return next();
         }
 
         console.log(createRecord);
-        res.send("OK")
+        req.isLoggedIn = true;
     } catch (err) {
         throw err;
     } finally {

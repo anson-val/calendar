@@ -22,16 +22,17 @@ module.exports = async function checkUser (req, res, next) {
             fetchHash = await pool.query("SELECT (hash) FROM (credential) WHERE (email_address = ?)", req.body.email)
 
         if (matchEmail[0]["COUNT(1)"] !== 1n) {
+            req.isLoggedIn = false;
             res.send("Incorrect Email")
             return next()
         }
 
         if (await argon2.verify(fetchHash[0]["hash"], req.body.password) === false) {
-            res.send("Incorrect Password")
+            req.isLoggedIn = false;
             return next()
         }
 
-        res.send("OK")
+        req.isLoggedIn = true;
     } catch (err) {
         throw err;
     } finally {
