@@ -16,7 +16,7 @@ app.use(generateRefreshToken)
 router.route("/").get((req, res) => {
     res.render("login")
 }).post(createUser, checkUser, fetchUserid, generateAccessToken, generateRefreshToken, async (req, res) => {
-    res.render("index")
+    res.redirect("/")
 })
 
 module.exports = router

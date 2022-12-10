@@ -9,6 +9,10 @@ const mariadb = require('mariadb'),
     })
 
 module.exports = async function fetchUserId (req, res, next) {
+        if (!req.isLoggedIn) {
+                return next()
+        }
+
         let conn;
 
         try {
