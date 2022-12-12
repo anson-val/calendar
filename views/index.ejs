@@ -39,20 +39,20 @@
         </div>
     </section>
     <section class="event-entry-container" style="display: <%= eventDisplay %>">
-        <form method="post">
+        <form method="POST">
             <div class="event-input-area">
                 <div class="event-title-row">
                     <div class="textbox">
-                        <input class="f25 h50 fw600" type="text" name="event-title" required>
+                        <input class="f25 h50 fw600" type="text" name="eventTitle" required>
                         <label class="placeholder f25 fw600">Title</label>
                     </div>
                 </div>
                 <div class="event-input-row">
                     <h2>Date</h2>
                     <div class="datebox">
-                        <input type="date" name="event-start-date" id="event-start-date">
+                        <input type="date" name="eventStartDate" id="event-start-date">
                         <h3>to</h3>
-                        <input type="date" name="event-end-date" id="event-end-date">
+                        <input type="date" name="eventEndDate" id="event-end-date">
                     </div>
                 </div>
                 <div class="event-toggle-row">
@@ -63,9 +63,9 @@
                 </div>
                 <div class="event-input-row" style="display: none" id="entry-area-time">
                     <div class="datebox">
-                        <input type="time" name="event-start-time" id="event-start-time">
+                        <input type="time" name="eventStartTime" id="event-start-time">
                         <h3>to</h3>
-                        <input type="time" name="event-end-time" id="event-end-time">
+                        <input type="time" name="eventEndTime" id="event-end-time">
                     </div>
                 </div>
                 <div class="event-toggle-row">
@@ -76,7 +76,7 @@
                 </div>
                 <div class="event-input-row" style="display: none" id="entry-area-location">
                     <div class="textbox">
-                        <input class=" f25 h50 fw500" type="text" name="event-location" required>
+                        <input class=" f25 h50 fw500" type="text" name="eventLocation" required>
                         <label class="placeholder f25 fw500">Location</label>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
             </div>
             <div class="event-actions">
                 <button class="btn-long">Edit</button>
-                <button class="btn-long">Save</button>
+                <button class="btn-long" type="submit" formnovalidate>Save</button>
             </div>
         </form>
     </section>

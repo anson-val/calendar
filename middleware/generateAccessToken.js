@@ -7,7 +7,7 @@ module.exports = function generateAccessToken (req, res, next) {
 
     const accessToken = jwt.sign({userId: req.id},
         process.env.JWT_ACCESS_SECRET,
-        {expiresIn: '9s'})
+        {expiresIn: '9000s'})
 
     res.cookie("access", accessToken, {
         httpOnly: true,

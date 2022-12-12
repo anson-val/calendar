@@ -131,7 +131,7 @@ calDaysList.addEventListener("click", (e) => {
 })
 
 // Event Entry Area
-const     eventEntryFoldToggles = document.querySelectorAll(".event-entry-container .event-toggle-row input"),
+const eventEntryFoldToggles = document.querySelectorAll(".event-entry-container .event-toggle-row input"),
     tagListNoti = document.querySelector("#tag-list-noti"),
     tagListNotiItems = tagListNoti.querySelectorAll("li");
 
