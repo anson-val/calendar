@@ -8,7 +8,7 @@ const express = require('express'),
 
 router.route("/").get( verifyToken, decodeAccessToken, validateToken, generateAccessToken, (req, res) => {
     if (req.validToken) {
-        res.render("index")
+        res.render("index", { eventDisplay: "none"})
     } else if (req.tokenNeedRefresh){
         res.redirect("/")
     } else {

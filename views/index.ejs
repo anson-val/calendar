@@ -38,69 +38,71 @@
             <ul class="days"></ul>
         </div>
     </section>
-    <section class="event-entry-container">
-        <div class="event-input-area">
-            <div class="event-title-row">
-                <div class="textbox">
-                    <input class="f25 h50 fw600" type="text" required>
-                    <label class="placeholder f25 fw600">Title</label>
+    <section class="event-entry-container" style="display: <%= eventDisplay %>">
+        <form method="post">
+            <div class="event-input-area">
+                <div class="event-title-row">
+                    <div class="textbox">
+                        <input class="f25 h50 fw600" type="text" name="event-title" required>
+                        <label class="placeholder f25 fw600">Title</label>
+                    </div>
+                </div>
+                <div class="event-input-row">
+                    <h2>Date</h2>
+                    <div class="datebox">
+                        <input type="date" name="event-start-date" id="event-start-date">
+                        <h3>to</h3>
+                        <input type="date" name="event-end-date" id="event-end-date">
+                    </div>
+                </div>
+                <div class="event-toggle-row">
+                    <h2>Include Time</h2>
+                    <div class="slider">
+                        <input type="checkbox" id="entry-toggle-time">
+                    </div>
+                </div>
+                <div class="event-input-row" style="display: none" id="entry-area-time">
+                    <div class="datebox">
+                        <input type="time" name="event-start-time" id="event-start-time">
+                        <h3>to</h3>
+                        <input type="time" name="event-end-time" id="event-end-time">
+                    </div>
+                </div>
+                <div class="event-toggle-row">
+                    <h2>Include Location</h2>
+                    <div class="slider">
+                        <input type="checkbox" id="entry-toggle-location">
+                    </div>
+                </div>
+                <div class="event-input-row" style="display: none" id="entry-area-location">
+                    <div class="textbox">
+                        <input class=" f25 h50 fw500" type="text" name="event-location" required>
+                        <label class="placeholder f25 fw500">Location</label>
+                    </div>
+                </div>
+                <div class="event-toggle-row">
+                    <h2>Notification</h2>
+                    <div class="slider">
+                        <input type="checkbox" id="entry-toggle-reminder">
+                    </div>
+                </div>
+                <div class="event-input-row" style="display: none" id="entry-area-reminder">
+                    <ul class="tag-list" id="tag-list-noti">
+                        <li><input type="radio" name="event-noti-before">5 minutes before</li>
+                        <li><input type="radio" name="event-noti-before">10 minutes before</li>
+                        <li><input type="radio" name="event-noti-before">15 minutes before</li>
+                        <li><input type="radio" name="event-noti-before">30 minutes before</li>
+                        <li><input type="radio" name="event-noti-before">1 hour before</li>
+                        <li><input type="radio" name="event-noti-before">1 day before</li>
+                        <li><input type="radio" name="event-noti-before">1 week before</li>
+                    </ul>
                 </div>
             </div>
-            <div class="event-input-row">
-                <h2>Date</h2>
-                <div class="datebox">
-                    <input type="date" id="entry-start-date">
-                    <h3>to</h3>
-                    <input type="date" id="entry-end-date">
-                </div>
+            <div class="event-actions">
+                <button class="btn-long">Edit</button>
+                <button class="btn-long">Save</button>
             </div>
-            <div class="event-toggle-row">
-                <h2>Include Time</h2>
-                <div class="slider">
-                    <input type="checkbox" id="entry-toggle-time">
-                </div>
-            </div>
-            <div class="event-input-row" style="display: none" id="entry-area-time">
-                <div class="datebox">
-                    <input type="time" id="entry-start-time">
-                    <h3>to</h3>
-                    <input type="time" id="entry-end-time">
-                </div>
-            </div>
-            <div class="event-toggle-row">
-                <h2>Include Location</h2>
-                <div class="slider">
-                    <input type="checkbox" id="entry-toggle-location">
-                </div>
-            </div>
-            <div class="event-input-row" style="display: none" id="entry-area-location">
-                <div class="textbox">
-                    <input class=" f25 h50 fw500" type="text" required>
-                    <label class="placeholder f25 fw500">Location</label>
-                </div>
-            </div>
-            <div class="event-toggle-row">
-                <h2>Notification</h2>
-                <div class="slider">
-                    <input type="checkbox" id="entry-toggle-reminder">
-                </div>
-            </div>
-            <div class="event-input-row" style="display: none" id="entry-area-reminder">
-                <ul class="tag-list" id="tag-list-noti">
-                    <li><input type="radio" name="noti-before">5 minutes before</li>
-                    <li><input type="radio" name="noti-before">10 minutes before</li>
-                    <li><input type="radio" name="noti-before">15 minutes before</li>
-                    <li><input type="radio" name="noti-before">30 minutes before</li>
-                    <li><input type="radio" name="noti-before">1 hour before</li>
-                    <li><input type="radio" name="noti-before">1 day before</li>
-                    <li><input type="radio" name="noti-before">1 week before</li>
-                </ul>
-            </div>
-        </div>
-        <div class="event-actions">
-            <button class="btn-long">Edit</button>
-            <button class="btn-long">Save</button>
-        </div>
+        </form>
     </section>
     <div class="event-previewer">
         <header>
