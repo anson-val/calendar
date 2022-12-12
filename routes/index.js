@@ -16,4 +16,8 @@ router.route("/").get( verifyToken, decodeAccessToken, validateToken, generateAc
     }
 })
 
+router.route("/new").get( (req, res) => {
+    res.render("index", { eventDisplay: "block"})
+})
+
 module.exports = router
